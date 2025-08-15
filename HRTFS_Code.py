@@ -1,11 +1,13 @@
 import numpy as np
 import pysofaconventions as sofa
-import matplotlib.pyplot as plt
 from scipy.io.wavfile import read, write
 from OverlapCode import overlap_save
 import sounddevice as sd
 import librosa
 
+
+'''funcionalidade do codigo: definir o parametro de direcao e rodar o audio que sera direcionado
+dos parametros escolhidos.'''
 
 SAMPLE_RATE = 44100
 
@@ -14,7 +16,7 @@ SAMPLE_RATE = 44100
 sofa_file_path = r"C:\Users\m\Downloads\KEMAR_GRAS_EarSim_SmallEars_FreeFieldComp_44kHz.sofa"
 
 # definir angulacao
-azimute_alvo = 45
+azimute_alvo = -45
 elevacao_alvo = 45
 
 

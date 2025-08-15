@@ -6,6 +6,9 @@ from pynput import keyboard
 import librosa
 import pysofaconventions as sofa
 
+'''funcionalidade do codigo: rodar o audio enquanto e possivel alterar a direcao da fonte sonora
+atraves das setas do teclado'''
+
 # config
 SOFA_PATH = r"C:\Users\m\Downloads\KEMAR_GRAS_EarSim_SmallEars_FreeFieldComp_44kHz.sofa"
 AUDIO_PATH = r"C:\Users\m\Downloads\260cde50.wav"
@@ -43,6 +46,7 @@ print(f"Áudio mono: {len(audio_mono)/fs_sofa:.2f}s @ {fs_sofa} Hz")
 # definir n/l
 # L = N - M + 1 uteis por bloco
 M_ir = Nir
+
 if N < M_ir:
     N = 1 << (int((M_ir - 1)).bit_length())  # ajusta para power-of-two >= M
 L = N - M_ir + 1
