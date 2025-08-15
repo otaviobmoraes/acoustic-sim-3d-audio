@@ -1,30 +1,6 @@
 import numpy as np
-
-import matplotlib.pyplot as plt
-
 from scipy.fft import fft, fftfreq
 
-import sounddevice as sd
-
-import pysofaconventions
-
-#codigo opcional, mostra o dispositivos de saida e entrada
-#print(sd.query_devices())
-
-'''
-SAMPLE_RATE   = 44100  #hz frequencia padrao, achei na internet
-CHANNELS = 1 # defini o canal
-FRAMES = 44100*3# define o tamanho da amostra
-
-print("Gravando...")
-buffer = sd.rec(frames=FRAMES,
-                     samplerate=SAMPLE_RATE,
-                     channels=CHANNELS,
-                     dtype='float32')
-sd.wait()
-print("Audio gravado")
-
-'''
 def overlap_save(x, h, N):
     """
     Aplica convolução circular entre x[n] e h[n] usando o método overlap-save com FFT.
@@ -78,34 +54,3 @@ def overlap_save(x, h, N):
         
 
     return np.array(y[:len(x)])    # garantir que a saida tenha o mesmo tamanho da entrada
-
-#sd.play(buffer, samplerate=SAMPLE_RATE)
-#sd.wait()
-
-
-'''exemplo de uso
-fs = 44100  # frequência de amostragem
-t = np.arange(FRAMES) / SAMPLE_RATE
-
-#sinal de entrada capturado pelo microfone
-#x = buffer.flatten() # flatten transforma 2d para 1d
-
-# filtro passa-baixas FIR simples 
-M = 129
-h = np.ones(M) / M  # filtro de média móvel
-
-# aplicar filtro com overlap-save
-N = 512  # tamanho do bloco
-y = overlap_save(x, h, N)
-
-# plotando
-plt.figure(figsize=(10, 4))
-plt.plot(t, x, label='Sinal Original', alpha=0.6)
-plt.plot(t, y, label='Sinal Filtrado', linewidth=2)
-plt.legend()
-plt.title('Filtragem com Overlap-Save')
-plt.xlabel('Tempo (s)')
-plt.tight_layout()
-plt.show()
-'''
-
