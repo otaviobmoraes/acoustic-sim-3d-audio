@@ -14,8 +14,8 @@ SAMPLE_RATE = 44100
 sofa_file_path = r"C:\Users\m\Downloads\KEMAR_GRAS_EarSim_SmallEars_FreeFieldComp_44kHz.sofa"
 
 # definir angulacao
-azimute_alvo = 15
-elevacao_alvo = 30
+azimute_alvo = 45
+elevacao_alvo = 45
 
 
 # abrir arquivo
@@ -33,6 +33,7 @@ distancias = np.sqrt(
     (source_pos[:, 0] - azimute_alvo) ** 2 +
     (source_pos[:, 1] - elevacao_alvo) ** 2
 )
+
 indice = np.argmin(distancias)
 
 print(f"Índice mais próximo encontrado: {indice}")
@@ -107,7 +108,7 @@ try:
     print(f"Duração: {len(audio_stereo_float) / fs_output:.2f} segundos")
 
     #tocar audio
-    
+
     sd.play(audio_stereo_float, samplerate=fs_output)
     sd.wait()
 
